@@ -25,7 +25,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode($this->title)?></title>
     <?php $this->head() ?>
 </head>
 <body class="d-flex flex-column h-100">
@@ -60,11 +60,13 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 </ul>
             </div>
         </div>
-        <div class="content mt-2 w-100 px-3 pt-5">
+        <div class="content mt-2 w-100 px-3 pt-2">
             <?= $content ?>
         </div>
-        <div class="right-sidebar">
-            <div>sidebar</div>
+        <div class="right-sidebar rounded m-2 p-2">
+            <h4 class=""><?= Yii::t('app', 'Right sidebar') ?></h4>
+            <hr class="my-1">
+            <div class="ps-1 "><?=Yii::t('app', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.') ?></div>
         </div>
         <?php if (!empty($this->params['breadcrumbs'])): ?>
             <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
@@ -73,7 +75,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     </div>
 </main>
 
-<footer id="footer" class="mt-auto py-3 bg-light ">
+<footer id="footer" class="mt-auto py-3 bg-secondary">
     <div class="container">
         <div class="row text-muted">
             <div class="col-md-6 text-center text-md-start">&copy; App <?= date('Y') ?></div>
