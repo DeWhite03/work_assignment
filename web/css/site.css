@@ -86,3 +86,28 @@ a.desc:after {
 .form-group {
     margin-bottom: 1rem;
 }
+
+.menu-item {
+    width: 100%;
+    display: block;
+    padding: .25rem 0;
+    color: #212529;
+    text-decoration: none;
+    border-bottom: #212529 solid 1px;
+}
+
+.project-card-bg {
+    background-color: #f8f9fa;
+}
+
+.sidebar{
+    width: 250px;
+    background-color: #abdde5;
+}
+
+.right-sidebar{
+    width: 250px;
+    right: 0;
+    position: relative;
+}
+

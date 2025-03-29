@@ -1,6 +1,7 @@
 <?php
 
 /** @var yii\web\View $this */
+
 /** @var string $content */
 
 use app\assets\AppAsset;
@@ -9,6 +10,7 @@ use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
+use rmrevin\yii\fontawesome\FA;
 
 AppAsset::register($this);
 
@@ -28,51 +30,53 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
-
-<header id="header">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest
-                ? ['label' => 'Login', 'url' => ['/site/login']]
-                : '<li class="nav-item">'
-                    . Html::beginForm(['/site/logout'])
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'nav-link btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>'
-        ]
-    ]);
-    NavBar::end();
-    ?>
-</header>
-
-<main id="main" class="flex-shrink-0" role="main">
-    <div class="container">
+<main id="main" class="flex-grow-1" role="main">
+    <div class="body-container d-flex flex-row h-100">
+        <div class="sidebar h-100 ps-2 pt-2">
+            <div class="d-flex flex-column flex-shrink-0 p-0 mt-0">
+                <a href="/" class="d-flex align-items-center mb-2 mb-md-0 me-md-auto link-dark text-decoration-none">
+                    <span class="fs-4">My company</span>
+                </a>
+                <hr class="my-1">
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" aria-current="page">
+                            <?= FA::icon('home') ?>
+                            <?= Yii::t('app', 'Home') ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <?= FA::icon('tachometer') ?>
+                            <?= Yii::t('app', 'Dashboard') ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <?= FA::icon('shopping-cart') ?>
+                            <?= Yii::t('app', 'Orders') ?>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content mt-2 w-100 px-3 pt-5">
+            <?= $content ?>
+        </div>
+        <div class="right-sidebar">
+            <div>sidebar</div>
+        </div>
         <?php if (!empty($this->params['breadcrumbs'])): ?>
             <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
         <?php endif ?>
         <?= Alert::widget() ?>
-        <?= $content ?>
     </div>
 </main>
 
-<footer id="footer" class="mt-auto py-3 bg-light">
+<footer id="footer" class="mt-auto py-3 bg-light ">
     <div class="container">
         <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; My Company <?= date('Y') ?></div>
-            <div class="col-md-6 text-center text-md-end"><?= Yii::powered() ?></div>
+            <div class="col-md-6 text-center text-md-start">&copy; App <?= date('Y') ?></div>
         </div>
     </div>
 </footer>

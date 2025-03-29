@@ -9,7 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-
+use app\models\Project;
 class SiteController extends Controller
 {
     /**
@@ -54,6 +54,7 @@ class SiteController extends Controller
         ];
     }
 
+
     /**
      * Displays homepage.
      *
@@ -61,7 +62,19 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        // Fetch all projects from the database
+        $projects = Project::find()->all();
+
+        $projectsWithProgress = [];
+        foreach ($projects as $project) {
+            $projectsWithProgress[] = [
+                'project' => $project, // Store the project
+                'progress' => $project->getProgress(), // Calculate and store the progress
+            ];
+        }
+
+        // Pass projects and their progress to the view
+        return $this->render('index', ['projects' => $projects, 'projectsWithProgress' => $projectsWithProgress]);
     }
 
     /**
