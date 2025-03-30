@@ -12,12 +12,12 @@ class ProjectController extends Controller
      * @throws NotFoundHttpException
      */
 
-    public function actionIndex()
+    public function actionIndex(): string
     {
         $projects = Project::find()->all(); // Fetch all projects from DB
         return $this->render('index', ['projects' => $projects]);
     }
-    public function actionView($id)
+    public function actionView($id): string
     {
         $project = Project::findOne($id);
         if (!$project) {

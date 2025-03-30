@@ -32,10 +32,10 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <?php $this->beginBody() ?>
 <main id="main" class="flex-grow-1" role="main">
     <div class="body-container d-flex flex-row h-100">
-        <div class="sidebar h-100 ps-2 pt-2">
+        <div class="sidebar h-100 px-2 pt-2">
             <div class="d-flex flex-column flex-shrink-0 p-0 mt-0">
-                <a href="/" class="d-flex align-items-center mb-2 mb-md-0 me-md-auto link-dark text-decoration-none">
-                    <span class="fs-4">My company</span>
+                <a href="/" class="d-flex align-items-center mb-2 ps-3 mb-md-0 link-dark text-decoration-none">
+                    <span class="fs-4 font-weight-bold">Progress</span>
                 </a>
                 <hr class="my-1">
                 <ul class="nav nav-pills flex-column mb-auto">
